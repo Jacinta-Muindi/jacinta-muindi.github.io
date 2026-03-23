@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jacinta Wayua Muindi — Statistician & Data Scientist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0f1117; --paper: #f5f2eb; --accent: #c84b31;
+      --accent2: #2a6049; --muted: #7a7260; --rule: #d8d2c4; --card-bg: #fffef9;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; width: 100%; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px; pointer-events: none; z-index: 1000; opacity: 0.5;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem; background: rgba(245,242,235,0.92);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); z-index: 500;
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 3rem 4rem; gap: 4rem; max-width: 1200px; margin: 0 auto; }
+    .hero-text { animation: fadeUp 0.9s ease both; }
+    .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+    .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.05; margin-bottom: 1rem; }
+    .hero-name em { font-style: italic; color: var(--accent2); }
+    .hero-tagline { font-size: 1.05rem; color: var(--muted); line-height: 1.7; max-width: 420px; margin-bottom: 2.5rem; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 1.8rem; border: 1.5px solid var(--ink); text-decoration: none; color: var(--ink); transition: all 0.25s; display: inline-block; }
+    .btn:hover { background: var(--ink); color: var(--paper); }
+    .btn-filled { background: var(--accent); border-color: var(--accent); color: white; }
+    .btn-filled:hover { background: #a33928; border-color: #a33928; color: white; }
+    .btn-download { background: var(--accent2); border-color: var(--accent2); color: white; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .btn-download:hover { background: #1e4d38; border-color: #1e4d38; color: white; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; animation: fadeUp 0.9s 0.2s ease both; }
+    .stat-card { background: var(--card-bg); border: 1px solid var(--rule); padding: 1.5rem; position: relative; }
+    .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--ink); line-height: 1; margin-bottom: 0.4rem; }
+    .stat-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+    section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
+    .section-header { margin-bottom: 3.5rem; }
+    .section-number { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.6rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.1; }
+    hr.divider { border: none; border-top: 1px solid var(--rule); max-width: 1200px; margin: 0 auto; }
+    #about { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+    .about-aside { position: sticky; top: 8rem; }
+    .about-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ink); color: var(--paper); padding: 0.35rem 0.75rem; margin-bottom: 0.5rem; margin-right: 0.5rem; }
+    .about-contact { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); line-height: 1.9; margin-top: 1.2rem; }
+    .about-contact a { color: var(--accent2); text-decoration: none; }
+    .about-contact a:hover { text-decoration: underline; }
+    .about-body p { font-size: 1.05rem; line-height: 1.8; color: #2a2820; margin-bottom: 1.2rem; }
+    .about-body p:first-child::first-letter { font-family: 'Playfair Display', serif; font-size: 3.5rem; float: left; line-height: 0.8; margin: 0.1em 0.1em 0 0; color: var(--accent); }
+    .timeline { display: flex; flex-direction: column; }
+    .timeline-item { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--rule); }
+    .timeline-item:first-child { border-top: 1px solid var(--rule); }
+    .tl-period { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; padding-top: 0.25rem; }
+    .tl-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin-top: 0.6rem; }
+    .tl-role { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.25rem; }
+    .tl-org { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.9rem; }
+    .tl-desc { font-size: 0.92rem; line-height: 1.7; color: #3d3b33; }
+    .tl-desc ul { padding-left: 1.2rem; }
+    .tl-desc li { margin-bottom: 0.4rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .skill-group { background: var(--card-bg); border: 1px solid var(--rule); padding: 1.8rem; }
+    .skill-group-title { font-family: 'DM Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 1.2rem; }
+    .skill-tag { display: inline-block; font-size: 0.82rem; border: 1px solid var(--rule); padding: 0.3rem 0.7rem; margin: 0.2rem; color: var(--ink); transition: all 0.2s; cursor: default; }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+    .pubs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .pub-card { background: var(--card-bg); border: 1px solid var(--rule); padding: 2rem; position: relative; transition: transform 0.25s; text-decoration: none; color: inherit; display: block; }
+    .pub-card:hover { transform: translateY(-3px); }
+    .pub-card::after { content: '&#8599;'; position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.2rem; color: var(--rule); transition: color 0.2s; }
+    .pub-card:hover::after { color: var(--accent); }
+    .pub-journal { font-family: 'DM Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); margin-bottom: 0.8rem; }
+    .pub-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; line-height: 1.4; margin-bottom: 1rem; }
+    .pub-doi { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
+    .pub-year { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent); }
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+    .edu-card { background: var(--card-bg); border: 1px solid var(--rule); border-top: 3px solid var(--accent2); padding: 2rem; }
+    .edu-degree { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .edu-school { font-family: 'DM Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent2); margin-bottom: 0.5rem; }
+    .edu-period { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); }
+    .edu-note { font-size: 0.85rem; color: #4a4840; margin-top: 0.8rem; line-height: 1.5; }
+    .cert-subtitle { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1.5rem; color: var(--ink); }
+    .workshops-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    .workshop-card { background: var(--card-bg); border: 1px solid var(--rule); border-left: 3px solid var(--accent2); padding: 1.2rem 1.4rem; }
+    .workshop-name { font-size: 0.9rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; line-height: 1.4; }
+    .workshop-org { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--accent2); margin-bottom: 0.2rem; }
+    .workshop-period { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: var(--muted); }
+    #contact { text-align: center; padding: 7rem 3rem; background: var(--ink); color: var(--paper); max-width: 100%; }
+    #contact .section-number { color: #a89e7e; }
+    #contact .section-title { color: var(--paper); margin-bottom: 1.5rem; }
+    .contact-sub { font-size: 1rem; color: #a89e7e; margin-bottom: 3rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .contact-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .contact-link { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); text-decoration: none; border: 1px solid #3a3830; padding: 0.85rem 1.6rem; transition: all 0.25s; display: inline-block; }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+    footer { background: var(--ink); color: #4a4840; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; padding: 1.5rem; border-top: 1px solid #1e1e1a; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      #about { grid-template-columns: 1fr; gap: 2rem; }
+      .about-aside { position: static; }
+      section { padding: 4rem 1.5rem; }
+      .skills-grid, .pubs-grid, .edu-grid, .workshops-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Jacinta W. Muindi</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">// Statistician &middot; Data Scientist &middot; Researcher</p>
+    <h1 class="hero-name">Jacinta<br><em>Wayua Muindi</em></h1>
+    <p class="hero-tagline">MSc Statistician with expertise in Bayesian modelling, machine learning, and time series analysis &mdash; committed to advancing computational approaches to infectious disease control.</p>
+    <div class="hero-cta">
+      <a href="#publications" class="btn btn-filled">View Research</a>
+      <a href="Jacinta_Muindi_CV.pdf" download="Jacinta_Muindi_CV.pdf" class="btn btn-download">&#8595; Download CV</a>
+      <a href="#contact" class="btn">Get In Touch</a>
+      <a href="https://github.com/jacinta-muindi" target="_blank" class="btn">GitHub &#8599;</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Peer-Reviewed Publications</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">MSc</div>
+      <div class="stat-label">Statistics, Univ. of Nairobi</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">8+</div>
+      <div class="stat-label">Tools &amp; Languages</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="about">
+  <div class="about-aside">
+    <div class="section-header">
+      <span class="section-number">01 &mdash; About</span>
+      <h2 class="section-title">A Statistician &amp; Data Scientist at the Intersection of Research &amp; Impact</h2>
+    </div>
+    <div>
+      <span class="about-tag">Nairobi, Kenya</span>
+      <span class="about-tag">Open to PhD</span>
+    </div>
+    <div class="about-contact">
+      <div>muindijacinta20@gmail.com</div>
+      <!-- <div>+254 711 716 335</div> -->
+      <div><a href="https://linkedin.com/in/jacinta-muindi-a9ba4b14a" target="_blank">LinkedIn &#8599;</a></div>
+      <div><a href="https://github.com/jacinta-muindi" target="_blank">GitHub &#8599;</a></div>
+    </div>
+  </div>
+  <div class="about-body reveal">
+    <p>Statistician and data scientist with a strong foundation in Bayesian and probabilistic modelling, machine learning, time series analysis, and stochastic processes. I believe rigorous mathematics, when applied thoughtfully, can unlock insights that drive real-world change.</p>
+    <p>I am the author of two peer-reviewed publications spanning non-linear time-series analysis and causal inference methodology. My previous research includes work on Self-Exciting Threshold Autoregressive (SETAR) models applied to Kenya’s NSE 20 Share Index. I am particularly interested in advancing statistical and machine learning methods for real-world applications, with a growing focus on public health and data-driven decision-making.</p>
+    <p>Beyond research, I have contributed to industry as a Machine Learning Collaborator, Data Science Intern, and Compliance Officer, applying data-driven thinking across finance, NLP, and marketing analytics. I am currently a part-time Statistics Lecturer at the University of Nairobi, where I mentor the next generation of analysts.</p>
+    <p>My long-term goal is to pursue a PhD focused on advancing computational approaches to infectious disease control, an area I have been actively exploring, while building a career that applies data science and statistical modeling to real-world health challenges.</p>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-number">02 &mdash; Experience</span>
+    <h2 class="section-title">Where I&rsquo;ve Applied My Work</h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div><div class="tl-period">Mar 2024 &ndash; Present</div><div class="tl-dot"></div></div>
+      <div>
+        <div class="tl-role">Part-Time Statistics Lecturer</div>
+        <div class="tl-org">University of Nairobi</div>
+        <div class="tl-desc"><ul>
+          <li>Develop and deliver lectures in statistics to undergraduate students, fostering critical thinking and analytical skills.</li>
+          <li>Design course materials, assignments, and examinations; invigilate exams.</li>
+          <li>Mentor and guide students through personalised support and hands-on experience.</li>
+          <li><strong>Courses:</strong> Introduction to Probability &amp; Statistics &nbsp;&middot;&nbsp; Probability &amp; Statistics II &nbsp;&middot;&nbsp; Biostatistics</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div><div class="tl-period">Apr 2024 &ndash; Jan 2026</div><div class="tl-dot"></div></div>
+      <div>
+        <div class="tl-role">Compliance Officer / MLRO</div>
+        <div class="tl-org">Pearl Forex Bureau, Nairobi</div>
+        <div class="tl-desc"><ul>
+          <li>Led data-driven transaction monitoring and analysis to detect unusual activity and assess financial crime risks.</li>
+          <li>Oversaw AML/CFT/CPF policy implementation and development of sound internal controls.</li>
+          <li>Supported staff training and ensured regulatory alignment.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div><div class="tl-period">Feb 2024 &ndash; May 2024</div><div class="tl-dot"></div></div>
+      <div>
+        <div class="tl-role">Machine Learning Collaborator</div>
+        <div class="tl-org">OdumareTech</div>
+        <div class="tl-desc">Collaborated on developing, evaluating, and deploying an ML system for hate speech detection using multiple ML algorithms, building a tool to combat harmful content on social media platforms.</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div><div class="tl-period">Aug 2023 &ndash; Dec 2023</div><div class="tl-dot"></div></div>
+      <div>
+        <div class="tl-role">Data Science Intern</div>
+        <div class="tl-org">ExploreAI</div>
+        <div class="tl-desc"><ul>
+          <li>Developed an ML/AI content alignment model using Llama-2-7b, LangChain, and PyTorch for marketing persona targeting.</li>
+          <li>Conducted data analysis using Python and SQL, extracting actionable insights from large datasets.</li>
+          <li>Built visualisations and dashboards in Power BI to support data-driven decision-making.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div><div class="tl-period">Aug &ndash; Sept 2019</div><div class="tl-dot"></div></div>
+      <div>
+        <div class="tl-role">Census Content Supervisor</div>
+        <div class="tl-org">Kenya National Bureau of Statistics</div>
+        <div class="tl-desc">Coordinated national census operations &mdash; enumerator training, logistical preparation, enumeration area identification, supervision, and data review &mdash; ensuring accurate and efficient data collection.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-number">03 &mdash; Skills</span>
+    <h2 class="section-title">Tools of the Trade</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group reveal">
+      <div class="skill-group-title">// Statistical Methods</div>
+      <span class="skill-tag">Bayesian Modelling</span><span class="skill-tag">Probability Theory</span>
+      <span class="skill-tag">Time Series Analysis</span><span class="skill-tag">Stochastic Processes</span>
+      <span class="skill-tag">Causal Inference</span><span class="skill-tag">Biostatistics</span>
+      <span class="skill-tag">Propensity Score Matching</span>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">// Machine Learning &amp; AI</div>
+      <span class="skill-tag">ML Modelling</span><span class="skill-tag">Ensemble Methods</span>
+      <span class="skill-tag">NLP / LLMs</span><span class="skill-tag">LangChain</span>
+      <span class="skill-tag">PyTorch</span><span class="skill-tag">Hate Speech Detection</span>
+      <span class="skill-tag">Model Deployment</span>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">// Languages &amp; Tools</div>
+      <span class="skill-tag">Python</span><span class="skill-tag">R</span>
+      <span class="skill-tag">SQL</span><span class="skill-tag">Power BI</span>
+      <span class="skill-tag">Tableau</span><span class="skill-tag">SPSS</span>
+      <span class="skill-tag">Excel</span><span class="skill-tag">GitHub</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="publications">
+  <div class="section-header reveal">
+    <span class="section-number">04 &mdash; Research</span>
+    <h2 class="section-title">Peer-Reviewed Publications</h2>
+  </div>
+  <div class="pubs-grid">
+    <a href="https://doi.org/10.11648/j.ajtas.20241306.13" target="_blank" class="pub-card reveal">
+      <div class="pub-journal">American Journal of Theoretical and Applied Statistics &middot; Vol. 13, Issue 6</div>
+      <div class="pub-title">Self-Exciting Threshold Autoregressive (SETAR) Modelling of the NSE 20 Share Index Using the Bayesian Approach</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:1rem;">
+        <div class="pub-doi">DOI: 10.11648/j.ajtas.20241306.13</div>
+        <div class="pub-year">Nov 2024</div>
+      </div>
+    </a>
+    <a href="https://doi.org/10.11648/j.ajmcm.20240903.12" target="_blank" class="pub-card reveal">
+      <div class="pub-journal">American Journal of Mathematical and Computer Modelling &middot; Vol. 9, Issue 3</div>
+      <div class="pub-title">Propensity Score Matching: An Application on Observational Data</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:1rem;">
+        <div class="pub-doi">DOI: 10.11648/j.ajmcm.20240903.12</div>
+        <div class="pub-year">Dec 2024</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="education">
+  <div class="section-header reveal">
+    <span class="section-number">05 &mdash; Education</span>
+    <h2 class="section-title">Academic Foundation</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-degree">Master of Science in Statistics</div>
+      <div class="edu-school">University of Nairobi</div>
+      <div class="edu-period">Sept 2021 &ndash; Dec 2023</div>
+      <div class="edu-note">Research: Self-Exciting Threshold Autoregressive Modelling of the NSE 20 Share Index Using the Bayesian Approach</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-degree">BSc Mathematics</div>
+      <div class="edu-school">Technical University of Kenya</div>
+      <div class="edu-period">Jan 2013 &ndash; Dec 2016</div>
+      <div class="edu-note">Second Class Honours (Upper Division)</div>
+    </div>
+  </div>
+
+  <h3 class="cert-subtitle reveal">Certifications &amp; Training</h3>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div><div class="tl-period">Mar&ndash;Apr 2026</div><div class="tl-dot"></div></div>
+      <div>
+        <div class="tl-role">Foundational Methods in Data Science</div>
+        <div class="tl-org">AIMS Research and Innovation Centre</div>
+        <div class="tl-desc"> Foundational approaches in data science drawn from: Statistics and optimisation,
+Linear algebra and numerical analysis, Probability theory and functional analysis,
+Machine learning, and artificial intelligence.</div>
+      </div>
+    </div>
+    <!-- <div class="timeline-item reveal"> -->
+      <!-- <div><div class="tl-period">Nov&ndash;Dec 2025</div><div class="tl-dot"></div></div> -->
+      <!-- <div> -->
+        <!-- <div class="tl-role">MalariaX: Defeating Malaria from the Genes to the Globe</div> -->
+        <!-- <div class="tl-org">edX</div> -->
+        <!-- <div class="tl-desc">Biological dynamics of malaria (parasites, humans, mosquitoes), drug resistance, genomic surveillance, technology, and policy.</div> -->
+      <!-- </div> -->
+    <!-- </div> -->
+    <div class="timeline-item reveal">
+      <div><div class="tl-period">Jan&ndash;Dec 2023</div><div class="tl-dot"></div></div>
+      <div>
+        <div class="tl-role">Data Science Course</div>
+        <div class="tl-org">Explore AI Academy</div>
+        <div class="tl-desc">Analytic programming, data visualisation, machine learning, cloud computing, and model deployment using Streamlit and Flask.</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div><div class="tl-period">May&ndash;Aug 2022</div><div class="tl-dot"></div></div>
+      <div>
+        <div class="tl-role">Data Analytics Packages</div>
+        <div class="tl-org">Mathematics Association of Nairobi University</div>
+        <div class="tl-desc">Data management using Advanced Excel, statistical analysis using R, and data analysis using Python and SPSS.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="cert-subtitle reveal" style="margin-top:3rem;">Workshops</h3>
+  <div class="workshops-grid">
+    <!-- <div class="workshop-card reveal"> -->
+      <!-- <div class="workshop-name">Spatiotemporal Modelling of Climate-Sensitive Diseases</div> -->
+      <!-- <div class="workshop-org">dhis2, CSID Network, Data Lab for Social Good, TRUST, HISP Rwanda</div> -->
+      <!-- <div class="workshop-period">Dec 2025 &ndash; Jan 2026</div> -->
+    <!-- </div> -->
+    <div class="workshop-card reveal">
+      <div class="workshop-name">East-African School for Young Researchers on Advanced Machine Learning (EASY-ML)</div>
+      <div class="workshop-org">CNRS &amp; University of Nairobi</div>
+      <div class="workshop-period">July 2025</div>
+    </div>
+    <div class="workshop-card reveal">
+      <div class="workshop-name">AFRICAST Workshop on Tidy Time Series &amp; Forecasting in R</div>
+      <div class="workshop-org">International Institute of Forecasters</div>
+      <div class="workshop-period">October 2023</div>
+    </div>
+    <div class="workshop-card reveal">
+      <div class="workshop-name">School on Mathematical Programming and Algorithms</div>
+      <div class="workshop-org">ICTP-EAUMP</div>
+      <div class="workshop-period">July 2022</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <span class="section-number">06 &mdash; Contact</span>
+  <h2 class="section-title">Let&rsquo;s Connect</h2>
+  <p class="contact-sub">Whether you&rsquo;re looking to collaborate on research, discuss PhD opportunities, or simply talk data science &mdash; I&rsquo;d love to hear from you.</p>
+  <div class="contact-links">
+    <a href="mailto:muindijacinta20@gmail.com" class="contact-link">Email Me</a>
+    <a href="https://linkedin.com/in/jacinta-muindi-a9ba4b14a" target="_blank" class="contact-link">LinkedIn</a>
+    <a href="https://github.com/jacinta-muindi" target="_blank" class="contact-link">GitHub</a>
+    <a href="Jacinta_Muindi_CV.pdf" download="Jacinta_Muindi_CV.pdf" class="contact-link" style="border-color:#c84b31;color:#c84b31;">&#8595; Download CV</a>
+    <!-- <a href="tel:+254" class="contact-link">+254 711 716 335</a> -->
+  </div>
+</section>
+
+<footer>&copy; 2026 Jacinta Wayua Muindi &nbsp;&middot;&nbsp; Nairobi, Kenya</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
