@@ -13,7 +13,7 @@ My interest is in statistics and data analysis. I am passionate about uncovering
 
 Let's connect and bring data-driven ideas to life! Feel free to reach out for collaboration or discussion on any exciting data-related topics.
 
-📫 You can reach me at [muindijacinta536@gmail.com] or connect with me on [LinkedIn](https://www.linkedin.com/in/jacinta-muindi-a9ba4b14a/).
+📫 You can reach me at [muindijacinta20@gmail.com] or connect with me on [LinkedIn](https://www.linkedin.com/in/jacinta-muindi-a9ba4b14a/).
 📫 To see some of the projects I have worked on visit: [Portfolio](https://jacinta-muindi.github.io/).
 
 Looking forward to connecting with fellow data enthusiasts! 📊🚀
